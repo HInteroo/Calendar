@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Calendar/Events</title>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<!-- FontAwesome CSS -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<!-- ElegantFonts CSS -->
+	<link rel="stylesheet" href="css/elegant-fonts.css">
+
+	<!-- themify-icons CSS -->
+	<link rel="stylesheet" href="css/themify-icons.css">
+
+	<!-- Swiper CSS -->
+	<link rel="stylesheet" href="css/swiper.min.css">
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="css/EventCalendar.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="css/fullcalendar.css" />
+	<link rel="stylesheet" href="JqueryFiles/jquery-ui.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+	<link href="css/jquery.timepicker.css" rel="stylesheet">
+	<script src="js/jquery.timepicker.js"></script>
+	<script src="js/FullCalendarFunctions.js"></script>
+
+<body>
+
+	<div class="nav-bar">
+			<div class="container">
+					<div class="row">
+							<div class="col-12 d-flex flex-wrap justify-content-between align-items-center">
+									<div class="site-branding d-flex align-items-center">
+										 <a class="d-block" href="index.html" rel="home"><img class="d-block" src="images/logo.png" alt="logo"></a>
+									</div><!-- .site-branding -->
+
+									<nav class="site-navigation d-flex justify-content-end align-items-center">
+											<ul class="justify-content-lg-end align-content-center">
+													<li class="homepage"><a href="index.php">Home</a></li>
+													<li><button type="button" id="CreateEventButton" onclick = "toggleNavCalendar();">Create Event</button></li>
+													<li><div id="smallcalendar"></div></li>
+													<li><div id="CalendarListEvents"></li>
+															<!-- </div> -->
+														<!-- </div> -->
+
+											</ul>
+									</nav><!-- .site-navigation -->
+									<a href="index.php" id="LogInOrReg">Log Out</a>
+									<div class="hamburger-menu">
+											<span></span>
+											<span></span>
+											<span></span>
+											<span></span>
+									</div><!-- .hamburger-menu -->
+							</div><!-- .col -->
+					</div><!-- .row -->
+			</div><!-- .container -->
+	</div><!-- .nav-bar -->
+</header><!-- .site-header -->
+
+	<div id = "calendar"></div>						<!--The whole calendar is under the id 'calendar'-->
+	<div class = "modal bg-modal">				<!--This is the div that contains the hidden 'edit/insert' modal. THe background of the modal-->
+		<div class = "modal-content" id="SelectEvent">		<!--The hidden modal that pops up whenever you are editing or inserting a new event-->
+				<div class="Hide"> + </div>
+			<form id="EventForm" class="EventForm" name = "EventForm">				<!--The form that creates a new event or edits the current event-->
+					<label for="Title">Title</label>
+					<input type="text" name="Title" id="EventTitle" placeholder="Add Title" required/>
+					<br>
+					<label for = "LocationInput">Location's Title</label>
+					<input type="text" name="locationInput" id="LocationInput" placeholder="Add Location" />
+					<br>
+					<label for = "LocationAddress">Location's Address</label>
+					<input type="text" name="locationAddress" id="LocationAddressInput" placeholder="Add Address" />
+					<div class="StartTime">
+						<label>Start Date</label>
+						<input type="datetime"name="eventStart" id="eventStart" placeholder="Click here" readonly="readonly"/>
+						<input type="text" name="eventSTime"id="eventSTime" placeholder="Add Time"/>
+						<!-- <br> -->
+					</div>
+					<div class="EndTime">
+						<label>End Date</label>
+						<input type="text" name="eventEnd" id="eventEnd" placeholder="Click here" readonly="readonly"/>
+						<input type="text" name ="eventETime"id="eventETime" placeholder="Add Time"/>
+						<!-- <br> -->
+					</div>
+					<label for="Color">Choose Color</label>
+					<input type="color" id="colorList" name="Color" list="Colors" value="#3a87ad">
+					<datalist id="Colors">
+						<option value="#FF0000">Red</option>
+						<option value="#FFA500">Orange</option>
+						<option value="#FFFF00">Yellow</option>
+						<option value="#008000">Green</option>
+						<option value="#3a87ad">Default Blue</option>
+						<option value="#4B0082">Indigo</option>
+						<option value="#EE82EE">Violet</option>
+				</datalist>
+					<div class="DiscriptionArea">
+						<label id = "DescriptionLabel">Description</label>
+						<textarea id="Description" rows="12" cols="33"placeholder="Add Description.."></textarea>
+					</div>
+					<div class="SubmitAndSave">
+						<button type="submit" class="button" id="SubmitBtn"> Save</button>
+					</div>
+					<div class="Seperation"></div> <!--Line seperating description from rest because it takes (should take) a long portion of the modal-->
+					<div id="ValidationError"></div>
+			</form>
+		</div>
+	</div>
+
+	<div class = "modal Options">														<!--The background and container of the event's information-->
+		<div class = "modal-content" id ="ClickedEventModal">	<!--The hidden modal that pops up whenever you click on an event that has already been created. Shows it's details-->
+			<div class="Hide">+</div>
+				<div class="Trash glyphicon glyphicon-trash"></div>
+				<div class = "Edit 	glyphicon glyphicon-edit"></div>
+				<div class="ClickedEvent">
+					<div class="Square"></div>
+					<p class ='Title'></p>
+					<p class ='Date'></p>
+					<div class="glyphicon glyphicon-map-marker LocationGylph"></div>
+					<a class ='LocationTitle' href="http://maps.google.com/?q=" target="_blank"></a>
+					<p class ='Location'></p>
+					<div class="glyphicon glyphicon-align-justify DescriptionGylph"></div>
+					<p class ='Description'></p>
+				</div>
+		</div>
+	</div>
+
+		<footer class="site-footer">
+				<div class="footer-widgets">
+						<div class="container">
+								<div class="row">
+										<div class="col-12 col-md-6 col-lg-3">
+												<div class="foot-about">
+														<h2><a class="foot-logo" href="#"><img src="images/foot-logo.png" alt=""></a></h2>
+
+														<p>B.E.F is a nonprofit organization that presents opportunities to women and children by providing education and resources to succeed.</p>
+
+														<ul class="d-flex flex-wrap align-items-center">
+																<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+																<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+														</ul>
+												</div><!-- .foot-about -->
+										</div><!-- .col -->
+
+										<div class="col-12 col-md-6 col-lg-3 mt-5 mt-md-0">
+												<div class="foot-contact">
+														<h2>Contact</h2>
+
+														<ul>
+																<li><i class="fa fa-phone"></i><span>number</span></li>
+																<li><i class="fa fa-envelope"></i><span>bettereducationfoundation@gmail.com</span></li>
+																<li><i class="fa fa-map-marker"></i><span>New York, NY</span></li>
+														</ul>
+
+												</div><!-- .foot-contact -->
+
+										</div><!-- .col -->
+
+								</div><!-- .row -->
+						</div><!-- .container -->
+				</div><!-- .footer-widgets -->
+
+				<div class="footer-bar">
+						<div class="container">
+								<div class="row">
+										<div class="col-12">
+												<p class="m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | THE BETTER EDUCATION FOUNDATION IS A REGISTERED 501(C)(3) |This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+										</div><!-- .col-12 -->
+								</div><!-- .row -->
+						</div><!-- .container -->
+				</div><!-- .footer-bar -->
+		</footer><!-- .site-footer -->
+		<script type='text/javascript' src='js/jquery.js'></script>
+		<script type='text/javascript' src='js/jquery.collapsible.min.js'></script>
+		<script type='text/javascript' src='js/swiper.min.js'></script>
+		<script type='text/javascript' src='js/custom.js'></script>
+		<script type='text/javascript' src='js/circle-progress.min.js'></script>
+</body>
+</html>

@@ -1,0 +1,700 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
+
+body {
+    color: #757686;
+    font-size: 16px;
+    line-height: 1.8;
+    font-family: 'Montserrat', sans-serif;
+}
+
+img {
+    vertical-align: baseline;
+}
+
+/*
+# Site Branding
+--------------------------------*/
+.site-branding {
+    width: calc(100% - 24px);
+    padding: 20px 0;
+}
+
+.site-branding a {
+    margin-top: 6px;
+}
+
+@media screen and (max-width: 0px){
+    .site-branding {
+        width: auto;
+    }
+}
+
+/*
+  Hamburger Menu
+----------------------------------------*/
+.hamburger-menu {
+    position: relative;
+    width: 24px;
+    height: 22px;
+    margin: 0 auto;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+.hamburger-menu span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #757686;
+    border-radius: 10px;
+    opacity: 1;
+    left: 0;
+    transition: .25s ease-in-out;
+}
+
+.hamburger-menu span:nth-child(1) {
+    top: 2px;
+}
+
+.hamburger-menu span:nth-child(2),
+.hamburger-menu span:nth-child(3) {
+    top: 10px;
+}
+
+.hamburger-menu span:nth-child(4) {
+    top: 18px;
+}
+
+.hamburger-menu.open span:nth-child(1) {
+    top: 18px;
+    width: 0;
+    left: 50%;
+}
+
+.hamburger-menu.open span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.hamburger-menu.open span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.hamburger-menu.open span:nth-child(4) {
+    top: 18px;
+    width: 0;
+    left: 50%;
+}
+
+/*
+# Main Menu
+--------------------------------*/
+#LogInOrReg{
+  position: absolute;
+  right: 50px;
+  color: black;
+  font-weight: bold;
+}
+.site-navigation ul {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    z-index: 9999;
+    width: 300px;
+    max-width: calc(100% - 120px);
+    height: 100%;
+    padding: 30px 15px;
+    margin: 0;
+    background: #fff;
+    list-style: none;
+    overflow-x: scroll;
+    transition: all 0.35s;
+}
+
+.site-navigation.show ul {
+    left: 0;
+}
+
+.site-navigation ul li {
+    margin: 0 16px;
+}
+.site-navigation ul li a {
+    display: block;
+    padding: 16px 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    color: #757686;
+    text-decoration: none;
+    transition: color .35s;
+}
+.site-navigation ul li a:hover,
+.site-navigation ul li.current-menu-item a {
+    border-bottom: 3px solid #D3D3D3;
+    color: #D3D3D3;
+}
+
+/* ----------------------- CSS For the calendar------------------------------ */
+#calendar{
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+}
+
+/* ----------------------------CSS for the Event form modal --------------------- */
+.bg-modal, .Options{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #000000B3;
+  top: 0;
+  z-index: 1;
+  text-align: center;
+}
+#SelectEvent{
+  display: inline-block;
+  top: 20%;
+  width: 650px;
+  height: 400px;
+  background-color: white;
+  z-index: 6;
+  border-color: #dbfdff;
+  border-width: 3px;
+}
+#ClickedEventModal{
+  display: inline-block;
+  top: 20%;
+  width: 400px;
+  height: 350px auto;
+  background-color: white;
+  z-index: 6;
+  border-color: #dbfdff;
+  border-width: 3px;
+}
+.EventForm {
+  width: 100%;
+  height: 100%;
+  margin-top: 15px;
+}
+
+.EventForm input{
+  position: relative;
+  left: -90px;
+  margin: 13px;
+  border-style:none;
+  font-size: 15px;
+  border-width: 2px;
+  outline: none;
+  background-color: #f9f9f9;
+  border-bottom: 2px solid transparent;
+}
+#eventETime:focus,#eventSTime:focus,#eventStart:focus,#eventEnd:focus,#EventTitle:focus,#LocationInput:focus,#LocationAddressInput:focus{
+  border-color: blue;
+}
+#eventETime,#eventSTime{
+  margin-left: -17px;
+  text-align: center;
+}
+#eventStart, #eventSTime{
+  width: 14%;
+}
+#eventEnd, #eventETime{
+  width: 14%;
+}
+#EventTitle,#colorList,#LocationInput,#LocationAddressInput{
+  width: 28%;
+}
+#eventSTime:hover,#eventETime:hover{
+  cursor: pointer;
+  background-color: #eaecef;
+}
+.EventForm label{
+  position: absolute;
+  font-weight: bold;
+  left: 10px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+.Seperation{
+  border-radius: 10px;
+  position: absolute;
+  top: 30px;
+  left: 340px;
+  height: 300px;
+  background-color: #b6d6b8;
+  width: 1px;
+}
+.DiscriptionArea{
+  position: absolute;
+  top: 50px;
+  right: 30px;
+}
+#DescriptionLabel{
+  position: absolute;
+  top: -30px;
+  left: 0px;
+}
+#Description{
+  resize: none;
+  border-color: #dadfe8;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+.Hide,.Edit,.Trash{
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  cursor: pointer;
+  top: 12px !important;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+}
+.Hide{
+  line-height: 23px;
+  font-size: 30px;
+  right: 15px;
+  transform:rotate(45deg);
+}
+.Edit{
+
+  line-height: 30px !important;
+  right: -120px;
+  color: black;
+}
+.Trash{
+  line-height: 30px !important;
+  right: -120px;
+}
+.Hide:hover,.Edit:hover,.Trash:hover{
+  background-color: #edeeef;   /* #f2efef */
+  border-radius: 50%;
+  text-decoration: none;
+  color: blue;
+}
+.SubmitAndSave{
+  height: 100%;
+  position: absolute;
+  right:12px;
+  top: 340px;
+}
+#SubmitBtn{
+  border-radius: 5px;
+  font-size: 16px;
+  height: 40px;
+  background-color: #2da345;
+  border:none;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  width: 75px;
+  margin-left: 10px;
+}
+#SubmitBtn:hover{
+  /* margin-top: 10px; */
+  background-color: #2faf49;
+}
+
+/* ----------------------------CSS for the Event form modal ends here--------------------- */
+
+/* ----------------------------CSS for the Calendar starts here--------------------- */
+.fc-left,.fc-right{
+  margin-top: -25px;
+  margin-left: 10px;
+  margin-right: 25px;
+}
+.fc-day-grid-event .fc-time,
+.fc-view-container .fc-title{
+  color: white;
+}
+.fc-event:hover{
+  cursor: pointer;
+  background-color: black !important;
+  transition: 0.7s;
+}
+.fc th{
+  border: none !important;
+  color: white;
+  background-color: black;
+  border: none;
+}
+.fc-day-grid{
+  font-size: 10px;
+}
+.fc-bg table tbody tr td:hover{
+  background-color: lightGray;
+  margin: 15px !important;
+}
+.fc-slats, /*horizontals*/
+.fc-content-skeleton, /*day numbers*/
+.fc-bgevent-skeleton /*events container*/{
+    pointer-events:none
+}
+
+/*Turn pointer events back on*/
+.fc-bgevent,
+.fc-event-container{
+    pointer-events:auto; /*events*/
+}
+.fc-state-highlight{
+  background-color: #ddeaff !important;
+  font-weight: bold;
+  font-size: 14px;
+}
+.fc-day-grid-event{
+  color: white;
+}
+.fc-button-group button{
+  font-weight: 500;
+  outline: none;
+  background: white;
+}
+.fc-button-group button:hover{
+  background-color: #ddeaff !important;
+}
+/* ----------------------------CSS for the Detailed/EventClicked modal--------------------- */
+
+.ClickedEvent{
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  padding-top: 50px;
+  word-wrap: break-word;
+  margin:0px;
+}
+.Square{
+  position: absolute;
+  left: 10px;
+  /* background-color: red; */
+  height: 13px;
+  width: 13px;
+  border-radius: 25px;
+}
+.Title{
+  position: relative;
+  margin-top: -3px;
+  margin-left: 50px;
+  margin-right: 30px;
+  font-size: 17px;
+}
+.Date{
+  font-size: 12.5px;
+  margin-top: -4px;
+  margin-left: 50px;
+}
+.Location{
+  font-size: 12.5px;
+  /* margin-top: -2px; */
+  margin-left: 50px;
+}
+.LocationTitle{
+  text-decoration: none;
+  position: relative;
+  margin-top: -20px;
+  margin-left: 32px;
+  margin-right: 50px;
+  color: black;
+}
+.LocationTitle:hover{
+  text-decoration: none;
+  cursor: pointer;
+}
+.LocationGylph{
+  left: 10px;
+  border-radius: 25px;
+}
+.Description{
+  position: relative;
+  margin-top: -20px;
+  margin-left: 50px;
+  margin-right: 30px;
+}
+.DescriptionGylph{
+  left: 10px;
+  border-radius: 25px;
+}
+
+#ValidationError{
+  position: absolute;
+  left: 100px;
+  color: #2faf49;
+}
+
+/* ------------------------------------- NAVIGATION BAR CSS------------------- */
+.homepage{
+  position: absolute;
+  left: 50%;
+
+  margin-left: -70px !important;
+  text-align: center;
+  border: none;
+  width: 50%;
+  }
+.pages{
+  position: absolute;
+  margin-left: -30px;
+  top: 80px;
+  width: 100%;
+  background-color: white !important;
+  height: 100%;
+  transition:  0.5s;
+  border-right: solid;
+  border-width: 1px;
+  border-color: lightgray;
+}
+.pages a{
+  left: -10px;
+  padding-bottom: 15px;
+  clear: both;
+	font-weight: bold;
+	transition: 1s;
+}
+#smallcalendar{
+  margin-left: -10px;
+  font-size: 14px;
+  border-bottom: solid 1px lightGray;
+  padding-bottom: 20px;
+}
+
+#smallcalendar .ui-datepicker td a
+{
+  height: 1px;
+  font-size: 10px;
+  border: none;
+}
+.ui-datepicker .ui-widget-content {
+    background: #999 none;
+}
+.ui-datepicker{
+  padding: .1em 0 0 !important;
+}
+#CreateEventButton{
+  outline: none;
+  width: 190px;
+  height: 40px;
+  margin-left: 20px;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  border-style: none;
+  background-color: #a7c6c6;
+  color: white;
+  font-weight: bold;
+  box-shadow: 2px 2px lightgray;
+}
+#CreateEventButton:hover{
+  background-color: #b7e2e2;
+  color: #edf2f2;
+}
+#CalendarListEvents{
+  margin-top: 40px;
+  margin-left: -25px;
+  font-size: 10px;
+  width: 280px;
+}
+#CalendarListEvents .fc-scroller{
+  height: 350px !important;
+}
+#CalendarListEvents .fc-left h2{
+    font-size: 12px;
+ }
+#ui-datepicker-div{
+  z-index:9999 !important;
+}
+.ui-datepicker-prev span, .ui-datepicker-next span{
+  background-color: white;
+  border-radius: 100px;
+}
+#smallcalendar .ui-datepicker-next{
+  left: 183px;
+}
+#smallcalendar .ui-widget.ui-widget-content, #smallcalendar .ui-widget-content{
+  border: none !important;
+}
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.footer-widgets {
+    position: relative;
+    padding: 96px 0 90px;
+    font-weight: 500;
+    color: #dddddd;
+    background: url("images/foot-bg.jpg") no-repeat center;
+    background-size: cover;
+    z-index: 99;
+}
+
+.footer-widgets::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 101%;
+    background: rgba(22,22,22,.92);
+}
+
+.footer-widgets h2 {
+    margin-bottom: 40px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.footer-widgets ul {
+    padding: 12px 0 0;
+    margin: 0;
+    list-style: none;
+}
+
+.footer-widgets ul li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.footer-widgets ul li a {
+    color: #a2a1a1;
+    text-decoration: none;
+}
+
+.footer-widgets ul li a:hover {
+    color: #D3D3D3;
+}
+
+.foot-about p {
+    font-size: 14px;
+    line-height: 2;
+    color: #929191;
+}
+
+.foot-about ul li {
+    margin-right: 28px;
+}
+
+.foot-about ul li a {
+    color: #fff;
+}
+
+.foot-latest-news ul li {
+    display: block;
+    margin-bottom: 36px;
+}
+
+.foot-latest-news ul li h3 {
+    font-size: 14px;
+}
+
+.foot-latest-news ul li .posted-date {
+    font-size: 12px;
+    color: #D3D3D3;
+}
+
+.foot-contact ul li {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 15px;
+}
+
+.foot-contact ul li .fa {
+    width: 28px;
+    margin-right: 10px;
+    font-size: 18px;
+    text-align: center;
+    color: #D3D3D3;
+}
+
+.foot-contact ul li span {
+    width: calc(100% - 3px);
+}
+
+/*
+# Subscribe
+--------------------------------*/
+.subscribe-form {
+    margin-top: 50px;
+}
+
+.subscribe-form input[type="email"] {
+    width: calc(100% - 70px);
+    padding: 12px 16px;
+    border: 0;
+    font-size: 12px;
+    line-height: 1;
+    background: #fff;
+    color: #131212;
+    outline: none;
+}
+
+.subscribe-form input[type="email"]::placeholder {
+    color: #9b9a9a;
+    font-style: italic;
+}
+
+.subscribe-form input[type="submit"] {
+    width: 68px;
+    padding: 13px 0 14px;
+    border: 0;
+    font-size: 12px;
+    line-height: 1;
+    text-transform: uppercase;
+    background: #D3D3D3;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+.footer-bar {
+    padding: 30px 0;
+    font-size: 12px;
+    color: #7b7b7b;
+    background: #131212;
+    text-align: center;
+}
+/* #NavigationIcon{
+	float:left;
+}
+#NavigationIcon:hover .bar1{
+	background-color: #919fb7 !important;
+	width:26px;
+	height:3px;
+}
+#NavigationIcon:hover .bar2{
+	background-color: #919fb7 !important;
+	width:26px;
+	height:3px;
+}
+#NavigationIcon:hover .bar3{
+	background-color: #919fb7 !important;
+	width:26px;
+	height:3px;
+}
+.bar1, .bar2, .bar3{
+	width:25px;
+	height:3px;
+	background-color: black;
+	margin:4px 10px;
+	transition: all 1s;
+}
+.navtoggle .pages{
+  visibility: visible;
+}
+.navtoggle ul .pages li a{
+	color: black;
+	text-align: center;
+} */
+/* .navtoggle #NavigationIcon{
+	float:left;
+}
+.navtoggle .bar1{
+ -webkit-transform: rotate(-45deg) translate(-8px, 6px);
+    transform: rotate(-45deg) translate(-8px, 6px);
+}
+.navtoggle .bar2 {
+	opacity: 0;
+}
+
+.navtoggle .bar3 {
+    -webkit-transform: rotate(45deg) translate(-3px, -3px);
+    transform: rotate(45deg) translate(-3px, -3px);
+} */
